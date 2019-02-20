@@ -1,0 +1,69 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+    <script>
+    
+    $(document).ready(function(){
+      const arr = ["ESL_SC2", "OgamingSC2", "cretetion", "drdisrespectlive", "shroud", "habathcx", "RobotCaleb", "noobs2ninjas"];
+      // Base URL for our API call
+      const user_url = "https://wind-bow.glitch.me/twitch-api/users/"; 
+      const url = "https://wind-bow.glitch.me/twitch-api/streams/";
+
+  
+      for(let i = 0; i < arr.length; i++) {
+
+        $.getJSON(`${url}${arr[i]}`, function(data) {
+          if(data.stream !== null) {
+         
+            $("#info").prepend(`<div class="row streamer"><img src="${data.stream.channel.logo}">${data.stream.channel.name} is playing ${data.stream.game} - ${data.stream.viewers} Viewers</div><br><hr>`);
+
+            } else {
+              $.getJSON(`${user_url}${arr[i]}`, function(data) {
+                $("#info").prepend(`<div class="row streamer"><img src="${data.logo}}">${data.display_name} is offline<br></div><hr>`);
+                  })
+         }
+        })
+      }
+  
+  
+});
+
+
+        
+    </script>
+  </head>
+  <body>
+    <div class="container">
+        
+          
+       <div class="row alf">
+         <h2 class="col-sm logo">TWITCH STREAMERS</h2>
+  
+         <div class="btn-group-vertical">
+            <button type="button" class="btn">All</button>
+            <button type="button" class="btn">Online</button>
+            <button type="button" class="btn">Offline</button>
+         </div>
+      </div>
+        
+        
+      
+      <main>
+        <div id="info"></div>
+      </main>
+        
+    </div>
+      
+      
+      
+    
+   
+    
+    </div>
+  </body>
+</html>

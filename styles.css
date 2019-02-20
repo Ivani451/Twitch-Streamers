@@ -1,0 +1,41 @@
+.btn-group-vertical {
+  float: right;
+}
+
+.btn {
+  background-color: #592ca3;
+  color: white;
+  border: 1px solid black;
+}
+
+.alf {
+  background-color: #6441a5;
+  color: white;
+}
+
+body {
+  min-width: 576px;
+  width: auto !important;
+}
+
+.streamer {
+  padding: 1em;
+}
+
+img {
+  margin: 0 5em 0 0;
+  height: 50px;
+  width: 10%;
+}
+
+hr {
+  padding: 10px;
+}
+
+#game {
+  text-align: left;
+}
+
+#offline {
+  color: red;
+}
